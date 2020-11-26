@@ -1,8 +1,6 @@
 @startuml
 class Mastermind [[java:mastermind.Mastermind]] {
-	+Mastermind()
 	-void play()
-	+{static}void main(String[] args)
 }
 class Game [[java:mastermind.Game]] {
 }
@@ -10,14 +8,9 @@ Mastermind --> "1" Game : game
 class Game [[java:mastermind.Game]] {
 	~int MAX_ATTEMPS
 	~int attempsCounter
-	~Game()
 	+void start()
 	+void play()
-	#void playTurn()
-	#boolean isEndOfGame()
-	#Result getLastResult()
 	+boolean resume()
-	+String toString()
 }
 class Console [[java:game.ui.Console]] {
 }
@@ -29,10 +22,7 @@ class Result [[java:game.Result]] {
 }
 Game o-down-> "0..10" Result : results
 class Result [[java:mastermind.Result]] {
-	~int whites
-	~int blacks
 	+Result(Combination proposedCombination, Combination secretCombination)
-	#void check()
 	+boolean isWinner()
 	+String toString()
 }
@@ -61,9 +51,6 @@ enum Colour [[java:mastermind.Colour]] {
 	+String toString()
 }
 class Combination [[java:mastermind.Combination]] {
-	#{static}int LENGHT
-	#String[] colors
-	+Combination()
 	+String[] getColors()
 	+boolean isValid()
 	+boolean isValidLength()
@@ -75,6 +62,8 @@ class Combination [[java:mastermind.Combination]] {
 	+String getValue()
 	+void setRandomValue()
 }
+
+Combination .down.>Colour
 class Console [[java:game.ui.Console]] {
 }
 Combination ..> "1" Console : console
