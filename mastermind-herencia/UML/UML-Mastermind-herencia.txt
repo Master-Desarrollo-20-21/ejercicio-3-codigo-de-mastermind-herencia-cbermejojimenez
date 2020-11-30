@@ -28,10 +28,10 @@ class Result [[java:mastermind.Result]] {
 }
 class Combination [[java:mastermind.Combination]] {
 }
-Result *--> "1" Combination : proposedCombination
+Result --> "1" Combination : proposedCombination
 class Combination [[java:mastermind.Combination]] {
 }
-Result *--> "1" Combination : secretCombination
+Result --> "1" Combination : secretCombination
 class Console [[java:mastermind.Console]] {
 	-{static}BufferedReader reader
 	+void out(String salida)
